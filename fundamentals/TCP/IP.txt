@@ -1,0 +1,45 @@
+-Application Layer - Protocols for communication between application process; create and interpret data (Protocols: HTTP/HTTPS, FTP, TFTP, SMTP, POP3, IMAP)
+Routers, switches don't care about application-layer details, they just move the data, only the communicating hosts interpret the data
+-Transport Layer - Provides end to end communication between between application processes using port numbers (for example, choosing which port to send the data to on the server, if the server does multiple services)
+Runs mainly on the communicating hosts.(Protocols: UDP, TCP)
+-Internet Layer - Provides end to end communication between hosts(device connected to the network, that can send and receive data) across networks using IP addresses and routers (Protocols: IPv4, IPv6, ICMP)
+-Local Network Layer - Provides hop-to-hop delivery within a local network using MAC addresses and switches  (Protocols: Wi-fi, Ethernet)
+-Physical Layer - Sends bits as electrical, optical, or radio signals over the physical medium 
+
+hop - one step along the path between two devices: from one router or host, to the next router or host in the path (switches dont count)
+Protocol - set of rules defining how data should be communicated between devices over a network
+Standard - an agreed-upon specification that describes how a protocol or technology should work
+
+A model is a description, not a law
+
+Encapsulation
+-The application layer prepares the data to be sent over the network
+-As the message moves down the stack, each layer encapsulates the data with a header including the information need for that layer
+Decapsulation
+-The receiving device receives the message as a stream of bits at layer 1(physical)
+-The device examines the info in the layer 2 header and trailer, and then removes them(decapsulation)
+-The decapsulation process continues up the stack, until the data is delivered to the application layer
+-The application processes the data and if needed generates a response that goes back down the stack and is transitted back
+
+Protocol data units
+
+-At each stage in the encapsulation/decapsulation process, there is a name given to the message:
+Data+L4 header is called a segment(TCP) or datagram(UDP)
+Segment/datagram + L3 header is called a packet
+Packet + L2 header/trailer is called a frame
+
+-Alternitavely we can describe the message at each stage as a PDU(protocol data unit)
+Segment/datagram = Layer 4 PDU (L4PDU)
+Packet = Layer 3 PDU (L3PDU)
+Frame = Layer 2 PDU (L2PDU)
+
+
+-The contents of each PDU (everything thats encapsulated) are called the payload (basically everything minus that PDU's header/trailer)
+Segment's/datagram's payload is the application data
+Packet's payload is a segment or datagram
+Frame's payload is a packet
+
+-Adjacent-layer interaction - each layer provides a service to the layer above it, and is serviced by the layer below it
+-Same-layer interaction - Each layer communicates with the same layer on other devices
+-As long as each layer keep its contract with the other layers, we can improve or replace protocols at different layers without redesigning everything,
+that flexibility is one of the main benefits of a layered model
