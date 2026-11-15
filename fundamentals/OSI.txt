@@ -1,0 +1,15 @@
+F0/1, G0/0, G0/1, G0/2 labels indicate the network interfaces used to connect the devices.
+G = Gigabit ehternet (GI/GIG)(1Gbps)
+F = Fast ethernet (FA)(100Mbps)
+
+192.168.1.0/24 ; 10.0.0.0/24 are network adresses
+Server1 - .100 under 192.168.1.0/24 means Server1 IP = 192.168.1.100
+
+OSI:
+Layer 1: physical ports/interfaces
+Layer 2: STP
+Layer 3: IP, OSPF - used to discover best paths to networks
+Layer 4: PDU is called a segment
+Layer 5:
+Layer 6:
+Layer 7: 5,6,7 are combined in TCP
